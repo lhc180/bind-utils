@@ -1,0 +1,426 @@
+#!/bin/bash
+
+path=$path:/bin:/usr/bin:/usr/ucb
+stats="/tmp/named-stats/"
+place=".1.3.6.1.4.1.555.555"
+
+get_counter () {
+    echo "counter"
+    if [ -f $stats$1 ]; then
+        cat $stats$1
+    else
+        echo 0
+    fi
+    exit 0
+}
+
+get_sum () {
+    echo "counter"
+    counter=0
+    for f in $stats/$1/*; do
+        counter=$((counter+`cat $f`))
+    done
+    echo $counter
+}
+
+req="$2"
+
+if [ "$1" = "-s" ]; then
+  exit 0
+fi
+
+if [ "$1" = "-n" ]; then
+    case "$req" in
+        $place)             ret=$place.1.1 ;;
+        $place.1.1)         ret=$place.1.2 ;;
+        $place.1.2)         ret=$place.1.3 ;;
+        $place.1.3)         ret=$place.1.4 ;;
+        $place.1.4)         ret=$place.1.5 ;;
+        $place.1.5)         ret=$place.1.6 ;;
+        $place.1.6)         ret=$place.1.7 ;;
+        $place.1.7)         ret=$place.1.8 ;;
+        $place.1.8)         ret=$place.1.9 ;;
+        $place.1.9)         ret=$place.1.10 ;;
+        $place.1.10)        ret=$place.1.11 ;;
+        $place.1.11)        ret=$place.1.12 ;;
+        $place.1.12)        ret=$place.1.13 ;;
+        $place.1.13)        ret=$place.1.14 ;;
+        $place.1.14)        ret=$place.1.15 ;;
+        $place.1.15)        ret=$place.1.16 ;;
+        $place.1.16)        ret=$place.1.17 ;;
+        $place.1.17)        ret=$place.1.18 ;;
+        $place.1.18)        ret=$place.1.19 ;;
+        $place.1.19)        ret=$place.1.20 ;;
+        $place.1.20)        ret=$place.1.21 ;;
+        $place.1.21)        ret=$place.1.22 ;;
+        $place.1.22)        ret=$place.1.23 ;;
+        $place.1.23)        ret=$place.1.24 ;;
+        $place.1.24)        ret=$place.1.25 ;;
+        $place.1.25)        ret=$place.1.26 ;;
+        $place.1.26)        ret=$place.1.27 ;;
+        $place.1.27)        ret=$place.1.28 ;;
+        $place.1.28)        ret=$place.1.29 ;;
+        $place.1.29)        ret=$place.1.30 ;;
+        $place.1.30)        ret=$place.1.31 ;;
+        $place.1.31)        ret=$place.1.32 ;;
+        $place.1.32)        ret=$place.1.100 ;;
+        $place.1.100)       ret=$place.2.1 ;;
+        $place.2.1)         ret=$place.2.2 ;;
+        $place.2.2)         ret=$place.2.3 ;;
+        $place.2.3)         ret=$place.2.4 ;;
+        $place.2.4)         ret=$place.2.5 ;;
+        $place.2.5)         ret=$place.2.6 ;;
+        $place.2.6)         ret=$place.2.7 ;;
+        $place.2.7)         ret=$place.2.8 ;;
+        $place.2.8)         ret=$place.2.9 ;;
+        $place.2.9)         ret=$place.2.10 ;;
+        $place.2.10)        ret=$place.2.11 ;;
+        $place.2.11)        ret=$place.2.12 ;;
+        $place.2.12)        ret=$place.2.13 ;;
+        $place.2.13)        ret=$place.2.14 ;;
+        $place.2.14)        ret=$place.2.15 ;;
+        $place.2.15)        ret=$place.2.16 ;;
+        $place.2.16)        ret=$place.2.17 ;;
+        $place.2.17)        ret=$place.2.18 ;;
+        $place.2.18)        ret=$place.2.19 ;;
+        $place.2.19)        ret=$place.2.20 ;;
+        $place.2.20)        ret=$place.2.21 ;;
+        $place.2.21)        ret=$place.2.22 ;;
+        $place.2.22)        ret=$place.2.23 ;;
+        $place.2.23)        ret=$place.2.24 ;;
+        $place.2.24)        ret=$place.2.25 ;;
+        $place.2.25)        ret=$place.2.26 ;;
+        $place.2.26)        ret=$place.2.27 ;;
+        $place.2.27)        ret=$place.2.28 ;;
+        $place.2.28)        ret=$place.2.29 ;;
+        $place.2.29)        ret=$place.2.30 ;;
+        $place.2.30)        ret=$place.2.31 ;;
+        $place.2.31)        ret=$place.2.32 ;;
+        $place.2.32)        ret=$place.2.33 ;;
+        $place.2.33)        ret=$place.2.34 ;;
+        $place.2.34)        ret=$place.2.35 ;;
+        $place.2.35)        ret=$place.2.36 ;;
+        $place.2.36)        ret=$place.2.37 ;;
+        $place.2.37)        ret=$place.2.38 ;;
+        $place.2.38)        ret=$place.2.39 ;;
+        $place.2.39)        ret=$place.3.1 ;;
+        $place.3.1)         ret=$place.3.2 ;;
+        $place.3.2)         ret=$place.3.3 ;;
+        $place.3.3)         ret=$place.3.4 ;;
+        $place.3.4)         ret=$place.3.5 ;;
+        $place.3.5)         ret=$place.3.6 ;;
+        $place.3.6)         ret=$place.3.7 ;;
+        $place.3.7)         ret=$place.3.8 ;;
+        $place.3.8)         ret=$place.3.9 ;;
+        $place.3.9)         ret=$place.3.10 ;;
+        $place.3.10)        ret=$place.3.11 ;;
+        $place.3.11)        ret=$place.3.12 ;;
+        $place.3.12)        ret=$place.3.13 ;;
+        $place.3.13)        ret=$place.3.14 ;;
+        $place.3.14)        ret=$place.3.15 ;;
+        $place.3.15)        ret=$place.3.16 ;;
+        $place.3.16)        ret=$place.4.1 ;;
+        $place.4.1)         ret=$place.4.2 ;;
+        $place.4.2)         ret=$place.4.3 ;;
+        $place.4.3)         ret=$place.4.4 ;;
+        $place.4.4)         ret=$place.4.5 ;;
+        $place.4.5)         ret=$place.4.6 ;;
+        $place.4.6)         ret=$place.4.7 ;;
+        $place.4.7)         ret=$place.4.8 ;;
+        $place.4.8)         ret=$place.4.9 ;;
+        $place.4.9)         ret=$place.4.10 ;;
+        $place.4.10)        ret=$place.4.11 ;;
+        $place.4.11)        ret=$place.4.12 ;;
+        $place.4.12)        ret=$place.4.13 ;;
+        $place.4.13)        ret=$place.4.14 ;;
+        $place.4.14)        ret=$place.4.15 ;;
+        $place.4.15)        ret=$place.4.16 ;;
+        $place.4.16)        ret=$place.4.17 ;;
+        $place.4.17)        ret=$place.4.18 ;;
+        $place.4.18)        ret=$place.5.1 ;;
+        $place.5.1)         ret=$place.5.2 ;;
+        $place.5.2)         ret=$place.5.3 ;;
+        $place.5.3)         ret=$place.5.4 ;;
+        $place.5.4)         ret=$place.5.5 ;;
+        $place.5.5)         ret=$place.5.6 ;;
+        $place.5.6)         ret=$place.5.7 ;;
+        $place.5.7)         ret=$place.5.8 ;;
+        $place.5.8)         ret=$place.5.9 ;;
+        $place.5.9)         ret=$place.5.10 ;;
+        $place.5.10)        ret=$place.5.11 ;;
+        $place.5.11)        ret=$place.5.12 ;;
+        $place.5.12)        ret=$place.5.13 ;;
+        $place.5.13)        ret=$place.5.14 ;;
+        $place.5.14)        ret=$place.5.15 ;;
+        $place.5.15)        ret=$place.5.16 ;;
+        $place.5.16)        ret=$place.5.17 ;;
+        $place.5.17)        ret=$place.5.18 ;;
+        $place.5.18)        ret=$place.5.19 ;;
+        $place.5.19)        ret=$place.5.20 ;;
+        $place.5.20)        ret=$place.5.21 ;;
+        $place.5.21)        ret=$place.5.22 ;;
+        $place.5.22)        ret=$place.5.23 ;;
+        $place.5.23)        ret=$place.5.24 ;;
+        $place.5.24)        ret=$place.5.25 ;;
+        $place.5.25)        ret=$place.5.26 ;;
+        $place.5.26)        ret=$place.5.27 ;;
+        $place.5.27)        ret=$place.5.28 ;;
+        $place.5.28)        ret=$place.5.29 ;;
+        $place.5.29)        ret=$place.5.30 ;;
+        $place.5.30)        ret=$place.5.31 ;;
+        $place.5.31)        ret=$place.5.32 ;;
+        $place.5.32)        ret=$place.5.33 ;;
+        $place.5.33)        ret=$place.5.34 ;;
+        $place.5.34)        ret=$place.5.35 ;;
+        $place.5.35)        ret=$place.5.36 ;;
+        $place.5.36)        ret=$place.6.1 ;;
+        $place.6.1)         ret=$place.6.2 ;;
+        $place.6.2)         ret=$place.6.3 ;;
+        $place.6.3)         ret=$place.6.4 ;;
+        $place.6.4)         ret=$place.6.5 ;;
+        $place.6.5)         ret=$place.6.6 ;;
+        $place.6.6)         ret=$place.6.7 ;;
+        $place.6.7)         ret=$place.6.8 ;;
+        $place.6.8)         ret=$place.6.9 ;;
+        $place.6.9)         ret=$place.6.10 ;;
+        $place.6.10)        ret=$place.6.11 ;;
+        $place.6.11)        ret=$place.6.12 ;;
+        $place.6.12)        ret=$place.6.13 ;;
+        $place.6.13)        ret=$place.6.14 ;;
+        $place.6.14)        ret=$place.6.15 ;;
+        $place.6.15)        ret=$place.6.16 ;;
+        $place.6.16)        ret=$place.6.17 ;;
+        $place.6.17)        ret=$place.6.18 ;;
+        $place.6.18)        ret=$place.6.19 ;;
+        $place.6.19)        ret=$place.6.20 ;;
+        $place.6.20)        ret=$place.6.21 ;;
+        $place.6.21)        ret=$place.6.22 ;;
+        $place.6.22)        ret=$place.6.23 ;;
+        $place.6.23)        ret=$place.6.24 ;;
+        $place.6.24)        ret=$place.6.25 ;;
+        $place.6.25)        ret=$place.6.26 ;;
+        $place.6.26)        ret=$place.6.27 ;;
+        $place.6.27)        ret=$place.7.1 ;;
+        $place.7.1)         ret=$place.7.2 ;;
+        $place.7.2)         ret=$place.7.3 ;;
+        $place.7.3)         ret=$place.7.4 ;;
+        $place.7.4)         ret=$place.7.5 ;;
+        $place.7.5)         ret=$place.7.6 ;;
+        $place.7.6)         ret=$place.7.7 ;;
+        $place.7.7)         ret=$place.7.8 ;;
+        $place.7.8)         ret=$place.7.9 ;;
+        $place.7.9)         ret=$place.7.10 ;;
+        $place.7.10)        ret=$place.7.11 ;;
+        $place.7.11)        ret=$place.7.12 ;;
+        $place.7.12)        ret=$place.7.13 ;;
+        $place.7.13)        ret=$place.7.14 ;;
+        $place.7.14)        ret=$place.7.15 ;;
+        $place.7.15)        ret=$place.7.16 ;;
+        $place.7.16)        ret=$place.7.17 ;;
+        $place.7.17)        ret=$place.7.18 ;;
+        $place.7.18)        ret=$place.7.19 ;;
+        $place.7.19)        ret=$place.7.20 ;;
+        $place.7.20)        ret=$place.8.1 ;;
+        $place.8.1)         ret=$place.8.2 ;;
+        *)              exit 0 ;;
+    esac
+else
+    case "$req" in
+        $place)         exit 0 ;;
+        *)              ret=$req ;;
+    esac
+fi
+echo "$ret"
+case "$ret" in
+    $place.1.1)         get_counter "cache-db-rrsets/a" ;;
+    $place.1.2)         get_counter "cache-db-rrsets/!a" ;;
+    $place.1.3)         get_counter "cache-db-rrsets/aaaa" ;;
+    $place.1.4)         get_counter "cache-db-rrsets/!aaaa" ;;
+    $place.1.5)         get_counter "cache-db-rrsets/cname" ;;
+    $place.1.6)         get_counter "cache-db-rrsets/!cname" ;;
+    $place.1.7)         get_counter "cache-db-rrsets/dlv" ;;
+    $place.1.8)         get_counter "cache-db-rrsets/!dlv" ;;
+    $place.1.9)         get_counter "cache-db-rrsets/dname" ;;
+    $place.1.10)        get_counter "cache-db-rrsets/dnskey" ;;
+    $place.1.11)        get_counter "cache-db-rrsets/ds" ;;
+    $place.1.12)        get_counter "cache-db-rrsets/!ds" ;;
+    $place.1.13)        get_counter "cache-db-rrsets/mx" ;;
+    $place.1.14)        get_counter "cache-db-rrsets/!mx" ;;
+    $place.1.15)        get_counter "cache-db-rrsets/naptr" ;;
+    $place.1.16)        get_counter "cache-db-rrsets/!naptr" ;;
+    $place.1.17)        get_counter "cache-db-rrsets/ns" ;;
+    $place.1.18)        get_counter "cache-db-rrsets/!ns" ;;
+    $place.1.19)        get_counter "cache-db-rrsets/nsec" ;;
+    $place.1.20)        get_counter "cache-db-rrsets/nsec3param" ;;
+    $place.1.21)        get_counter "cache-db-rrsets/nxdomain" ;;
+    $place.1.22)        get_counter "cache-db-rrsets/ptr" ;;
+    $place.1.23)        get_counter "cache-db-rrsets/!ptr" ;;
+    $place.1.24)        get_counter "cache-db-rrsets/rrsig" ;;
+    $place.1.25)        get_counter "cache-db-rrsets/soa" ;;
+    $place.1.26)        get_counter "cache-db-rrsets/!soa" ;;
+    $place.1.27)        get_counter "cache-db-rrsets/spf" ;;
+    $place.1.28)        get_counter "cache-db-rrsets/!spf" ;;
+    $place.1.29)        get_counter "cache-db-rrsets/srv" ;;
+    $place.1.30)        get_counter "cache-db-rrsets/!srv" ;;
+    $place.1.31)        get_counter "cache-db-rrsets/txt" ;;
+    $place.1.32)        get_counter "cache-db-rrsets/!txt" ;;
+    $place.1.100)       get_sum "cache-db-rrsets" ;;
+    $place.2.1)         get_counter "incoming-queries/a" ;;
+    $place.2.2)         get_counter "incoming-queries/a6" ;;
+    $place.2.3)         get_counter "incoming-queries/aaaa" ;;
+    $place.2.4)         get_counter "incoming-queries/afsdb" ;;
+    $place.2.5)         get_counter "incoming-queries/any" ;;
+    $place.2.6)         get_counter "incoming-queries/axfr" ;;
+    $place.2.7)         get_counter "incoming-queries/cname" ;;
+    $place.2.8)         get_counter "incoming-queries/dlv" ;;
+    $place.2.9)         get_counter "incoming-queries/dnskey" ;;
+    $place.2.10)        get_counter "incoming-queries/ds" ;;
+    $place.2.11)        get_counter "incoming-queries/hinfo" ;;
+    $place.2.12)        get_counter "incoming-queries/isdn" ;;
+    $place.2.13)        get_counter "incoming-queries/loc" ;;
+    $place.2.14)        get_counter "incoming-queries/mailb" ;;
+    $place.2.15)        get_counter "incoming-queries/mb" ;;
+    $place.2.16)        get_counter "incoming-queries/md" ;;
+    $place.2.17)        get_counter "incoming-queries/mf" ;;
+    $place.2.18)        get_counter "incoming-queries/mg" ;;
+    $place.2.19)        get_counter "incoming-queries/minfo" ;;
+    $place.2.20)        get_counter "incoming-queries/mr" ;;
+    $place.2.21)        get_counter "incoming-queries/mx" ;;
+    $place.2.22)        get_counter "incoming-queries/naptr" ;;
+    $place.2.23)        get_counter "incoming-queries/ns" ;;
+    $place.2.24)        get_counter "incoming-queries/nsap" ;;
+    $place.2.25)        get_counter "incoming-queries/nsec" ;;
+    $place.2.26)        get_counter "incoming-queries/null" ;;
+    $place.2.27)        get_counter "incoming-queries/nxt" ;;
+    $place.2.28)        get_counter "incoming-queries/ptr" ;;
+    $place.2.29)        get_counter "incoming-queries/reserved0" ;;
+    $place.2.30)        get_counter "incoming-queries/rp" ;;
+    $place.2.31)        get_counter "incoming-queries/rrsig" ;;
+    $place.2.32)        get_counter "incoming-queries/rt" ;;
+    $place.2.33)        get_counter "incoming-queries/soa" ;;
+    $place.2.34)        get_counter "incoming-queries/spf" ;;
+    $place.2.35)        get_counter "incoming-queries/srv" ;;
+    $place.2.36)        get_counter "incoming-queries/sshfp" ;;
+    $place.2.37)        get_counter "incoming-queries/txt" ;;
+    $place.2.38)        get_counter "incoming-queries/wks" ;;
+    $place.2.39)        get_counter "incoming-queries/x25" ;;
+    $place.3.1)         get_counter "incoming-requests/iquery" ;;
+    $place.3.2)         get_counter "incoming-requests/notify" ;;
+    $place.3.3)         get_counter "incoming-requests/query" ;;
+    $place.3.4)         get_counter "incoming-requests/reserved10" ;;
+    $place.3.5)         get_counter "incoming-requests/reserved11" ;;
+    $place.3.6)         get_counter "incoming-requests/reserved12" ;;
+    $place.3.7)         get_counter "incoming-requests/reserved13" ;;
+    $place.3.8)         get_counter "incoming-requests/reserved14" ;;
+    $place.3.9)         get_counter "incoming-requests/reserved15" ;;
+    $place.3.10)        get_counter "incoming-requests/reserved3" ;;
+    $place.3.11)        get_counter "incoming-requests/reserved6" ;;
+    $place.3.12)        get_counter "incoming-requests/reserved7" ;;
+    $place.3.13)        get_counter "incoming-requests/reserved8" ;;
+    $place.3.14)        get_counter "incoming-requests/reserved9" ;;
+    $place.3.15)        get_counter "incoming-requests/status" ;;
+    $place.3.16)        get_counter "incoming-requests/update" ;;
+    $place.4.1)         get_counter "name-server-statistics/auth-queries-rejected" ;;
+    $place.4.2)         get_counter "name-server-statistics/duplicate-queries-received" ;;
+    $place.4.3)         get_counter "name-server-statistics/ipv4-requests-received" ;;
+    $place.4.4)         get_counter "name-server-statistics/other-query-failures" ;;
+    $place.4.5)         get_counter "name-server-statistics/queries-caused-recursion" ;;
+    $place.4.6)         get_counter "name-server-statistics/queries-dropped" ;;
+    $place.4.7)         get_counter "name-server-statistics/queries-resulted-in-authoritative-answer" ;;
+    $place.4.8)         get_counter "name-server-statistics/queries-resulted-in-non-authoritative-answer" ;;
+    $place.4.9)         get_counter "name-server-statistics/queries-resulted-in-nxdomain" ;;
+    $place.4.10)        get_counter "name-server-statistics/queries-resulted-in-nxrrset" ;;
+    $place.4.11)        get_counter "name-server-statistics/queries-resulted-in-referral-answer" ;;
+    $place.4.12)        get_counter "name-server-statistics/queries-resulted-in-servfail" ;;
+    $place.4.13)        get_counter "name-server-statistics/queries-resulted-in-successful-answer" ;;
+    $place.4.14)        get_counter "name-server-statistics/recursive-queries-rejected" ;;
+    $place.4.15)        get_counter "name-server-statistics/requests-with-edns(0)-received" ;;
+    $place.4.16)        get_counter "name-server-statistics/responses-sent" ;;
+    $place.4.17)        get_counter "name-server-statistics/responses-with-edns(0)-sent" ;;
+    $place.4.18)        get_counter "name-server-statistics/truncated-responses-sent" ;;
+    $place.5.1)         get_counter "outgoing-queries/a" ;;
+    $place.5.2)         get_counter "outgoing-queries/a6" ;;
+    $place.5.3)         get_counter "outgoing-queries/aaaa" ;;
+    $place.5.4)         get_counter "outgoing-queries/afsdb" ;;
+    $place.5.5)         get_counter "outgoing-queries/any" ;;
+    $place.5.6)         get_counter "outgoing-queries/cname" ;;
+    $place.5.7)         get_counter "outgoing-queries/dlv" ;;
+    $place.5.8)         get_counter "outgoing-queries/dnskey" ;;
+    $place.5.9)         get_counter "outgoing-queries/ds" ;;
+    $place.5.10)        get_counter "outgoing-queries/hinfo" ;;
+    $place.5.11)        get_counter "outgoing-queries/isdn" ;;
+    $place.5.12)        get_counter "outgoing-queries/loc" ;;
+    $place.5.13)        get_counter "outgoing-queries/mb" ;;
+    $place.5.14)        get_counter "outgoing-queries/md" ;;
+    $place.5.15)        get_counter "outgoing-queries/mf" ;;
+    $place.5.16)        get_counter "outgoing-queries/mg" ;;
+    $place.5.17)        get_counter "outgoing-queries/minfo" ;;
+    $place.5.18)        get_counter "outgoing-queries/mr" ;;
+    $place.5.19)        get_counter "outgoing-queries/mx" ;;
+    $place.5.20)        get_counter "outgoing-queries/naptr" ;;
+    $place.5.21)        get_counter "outgoing-queries/ns" ;;
+    $place.5.22)        get_counter "outgoing-queries/nsap" ;;
+    $place.5.23)        get_counter "outgoing-queries/null" ;;
+    $place.5.24)        get_counter "outgoing-queries/nxt" ;;
+    $place.5.25)        get_counter "outgoing-queries/ptr" ;;
+    $place.5.26)        get_counter "outgoing-queries/reserved0" ;;
+    $place.5.27)        get_counter "outgoing-queries/rp" ;;
+    $place.5.28)        get_counter "outgoing-queries/rrsig" ;;
+    $place.5.29)        get_counter "outgoing-queries/rt" ;;
+    $place.5.30)        get_counter "outgoing-queries/soa" ;;
+    $place.5.31)        get_counter "outgoing-queries/spf" ;;
+    $place.5.32)        get_counter "outgoing-queries/srv" ;;
+    $place.5.33)        get_counter "outgoing-queries/sshfp" ;;
+    $place.5.34)        get_counter "outgoing-queries/txt" ;;
+    $place.5.35)        get_counter "outgoing-queries/wks" ;;
+    $place.5.36)        get_counter "outgoing-queries/x25" ;;
+    $place.6.1)         get_counter "resolver-statistics/edns(0)-query-failures" ;;
+    $place.6.2)         get_counter "resolver-statistics/formerr-received" ;;
+    $place.6.3)         get_counter "resolver-statistics/ipv4-ns-address-fetches" ;;
+    $place.6.4)         get_counter "resolver-statistics/ipv4-ns-address-fetch-failed" ;;
+    $place.6.5)         get_counter "resolver-statistics/ipv4-queries-sent" ;;
+    $place.6.6)         get_counter "resolver-statistics/ipv4-responses-received" ;;
+    $place.6.7)         get_counter "resolver-statistics/ipv6-ns-address-fetches" ;;
+    $place.6.8)         get_counter "resolver-statistics/ipv6-ns-address-fetch-failed" ;;
+    $place.6.9)         get_counter "resolver-statistics/ipv6-queries-sent" ;;
+    $place.6.10)        get_counter "resolver-statistics/ipv6-responses-received" ;;
+    $place.6.11)        get_counter "resolver-statistics/lame-delegations-received" ;;
+    $place.6.12)        get_counter "resolver-statistics/mismatch-responses-received" ;;
+    $place.6.13)        get_counter "resolver-statistics/nxdomain-received" ;;
+    $place.6.14)        get_counter "resolver-statistics/other-errors-received" ;;
+    $place.6.15)        get_counter "resolver-statistics/queries-with-rtt-100-500ms" ;;
+    $place.6.16)        get_counter "resolver-statistics/queries-with-rtt-10-100ms" ;;
+    $place.6.17)        get_counter "resolver-statistics/queries-with-rtt-<-10ms" ;;
+    $place.6.18)        get_counter "resolver-statistics/queries-with-rtt->-1600ms" ;;
+    $place.6.19)        get_counter "resolver-statistics/queries-with-rtt-500-800ms" ;;
+    $place.6.20)        get_counter "resolver-statistics/queries-with-rtt-800-1600ms" ;;
+    $place.6.21)        get_counter "resolver-statistics/query-retries" ;;
+    $place.6.22)        get_counter "resolver-statistics/query-timeouts" ;;
+    $place.6.23)        get_counter "resolver-statistics/servfail-received" ;;
+    $place.6.24)        get_counter "resolver-statistics/truncated-responses-received" ;;
+    $place.6.25)        get_counter "resolver-statistics/dnssec-nx-validation-succeeded" ;;
+    $place.6.26)        get_counter "resolver-statistics/dnssec-validation-attempted" ;;
+    $place.6.27)        get_counter "resolver-statistics/dnssec-validation-succeeded" ;;
+    $place.7.1)         get_counter "socket-io-statistics/tcpipv4-connections-accepted" ;;
+    $place.7.2)         get_counter "socket-io-statistics/tcpipv4-connections-established" ;;
+    $place.7.3)         get_counter "socket-io-statistics/tcpipv4-recv-errors" ;;
+    $place.7.4)         get_counter "socket-io-statistics/tcpipv4-socket-connect-failures" ;;
+    $place.7.5)         get_counter "socket-io-statistics/tcpipv4-sockets-closed" ;;
+    $place.7.6)         get_counter "socket-io-statistics/tcpipv4-sockets-opened" ;;
+    $place.7.7)         get_counter "socket-io-statistics/udpipv4-connections-established" ;;
+    $place.7.8)         get_counter "socket-io-statistics/udpipv4-recv-errors" ;;
+    $place.7.9)         get_counter "socket-io-statistics/udpipv4-send-errors" ;;
+    $place.7.10)        get_counter "socket-io-statistics/udpipv4-socket-bind-failures" ;;
+    $place.7.11)        get_counter "socket-io-statistics/udpipv4-sockets-closed" ;;
+    $place.7.12)        get_counter "socket-io-statistics/udpipv4-sockets-opened" ;;
+    $place.7.13)        get_counter "socket-io-statistics/udpipv6-connections-established" ;;
+    $place.7.14)        get_counter "socket-io-statistics/udpipv6-recv-errors" ;;
+    $place.7.15)        get_counter "socket-io-statistics/udpipv6-send-errors" ;;
+    $place.7.16)        get_counter "socket-io-statistics/udpipv6-socket-bind-failures" ;;
+    $place.7.17)        get_counter "socket-io-statistics/udpipv6-socket-connect-failures" ;;
+    $place.7.18)        get_counter "socket-io-statistics/udpipv6-sockets-closed" ;;
+    $place.7.19)        get_counter "socket-io-statistics/udpipv6-sockets-opened" ;;
+    $place.7.20)        get_counter "socket-io-statistics/tcpipv6-sockets-opened" ;;
+    $place.8.1)         get_counter "zone-maintenance-statistics/ipv4-notifies-sent" ;;
+    $place.8.2)         get_counter "zone-maintenance-statistics/ipv6-notifies-sent" ;;
+esac
