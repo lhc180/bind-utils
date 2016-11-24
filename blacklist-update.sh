@@ -1,5 +1,7 @@
 #/bin/bash
 
+# Main script
+
 BIND_CONF="/etc/named.conf"
 BLACKLIST_CONF="/etc/named.blacklist.conf"
 INFO_ZONE="/var/named/master/blacklist.update"
